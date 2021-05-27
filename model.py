@@ -9,10 +9,10 @@ class ContractingBlock(nn.Module):
     Values:
         input_channels: the number of channels to expect from a given input
     '''
-    def __init__(self, in_channels, out_channels):
+    def __init__(self, hid_channels):
         super().__init__()
-        self.conv3x3_0 = nn.Conv2d( in_channels, out_channels, kernel_size=3)
-        self.conv3x3_1 = nn.Conv2d(out_channels, out_channels, kernel_size=3)
+        self.conv3x3_0 = nn.Conv2d( hid_channels, hid_channels*2, kernel_size=3)
+        self.conv3x3_1 = nn.Conv2d(hid_channels*2, hid_channels*2, kernel_size=3)
 
     def forward(self, x):
         '''
@@ -119,11 +119,11 @@ class Unet(nn.Module):
         super(Unet, self).__init__()
 
         self.contract1 = ContractingBlock(1, hid_channels)
-        self.contract2 = ContractingBlock(hid_channels, hid_channels*2)
-        self.contract3 = ContractingBlock(hid_channels*2, hid_channels*4)
-        self.contract4 = ContractingBlock(hid_channels*4, hid_channels*8)
+        self.contract2 = ContractingBlock(hid_channels)
+        self.contract3 = ContractingBlock(hid_channels*2)
+        self.contract4 = ContractingBlock(hid_channels*4)
         
-        self.bottleneck = ContractingBlock(hid_channels*8, hid_channels*16)
+        self.bottleneck = ContractingBlock(hid_channels*8)
         
         self.expand1 = ExpandingBlock(hid_channels*16)
         self.expand2 = ExpandingBlock(hid_channels*8)
