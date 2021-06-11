@@ -115,7 +115,7 @@ class Unet(nn.Module):
         input_channels: the number of channels to expect from a given input
         output_channels: the number of channels to expect for a given output
     '''
-    def __init__(self, in_channels=1, hid_channels=64, out_channels=2):
+    def __init__(self, in_channels=1, hid_channels=64, out_channels=1):
         super(Unet, self).__init__()
 
         self.contract1 = ContractingBlock(1, hid_channels)
