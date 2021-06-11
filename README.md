@@ -39,12 +39,12 @@ model.load_state_dict(torch.load('biounet.pth'))
 
 Loss (**BCE**) changing through 200 epochs of training:
 <a><div>
-  <img title="Loss" alt="Alt text" src="assets/loss.png" align="center" height="200px" width="300px"/>
+  <img title="Loss" alt="Alt text" src="assets/loss.png" align="center" height="250px" width="350px"/>
 </div></a>
 
 Performance:
 <a><div>
-  <img title="Results" alt="Alt text" src="assets/result.png" align="center" height="500px" width="600px"/>
+  <img title="Results" alt="Alt text" src="assets/result.png" align="center" height="400px" width="480px"/>
 </div></a>
 
 Average **Intersection over Union**: 96.36%
